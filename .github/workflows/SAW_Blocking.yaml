@@ -108,7 +108,7 @@ jobs:
       # Step 10: Install Probely CLI & Start Scan Blocking on CRITICAL
       - name: Start Scan
         run: |
-           probely targets follow-scan --api-key ${{ secrets.SAW_API_KEY }} --severity-threshold CRITICAL ${{ vars.SAW_TARGET_ID }}
+           probely targets follow-scan --api-key ${{ secrets.SAW_API_KEY }} --severity-threshold CRITICAL 3dPzYCbD1aBm
           
       # Step 14: Clean up
       - name: Clean up Docker resources
