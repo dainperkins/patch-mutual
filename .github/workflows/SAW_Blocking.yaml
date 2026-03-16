@@ -26,7 +26,8 @@ env:
   DOCKER_NETWORK: cicd
 
   # Github Secrets                                             
-  SAW_AGENT_KEY: ${{ secrets.SAW_AGENT_KEY }}                                           
+  SAW_AGENT_KEY: ${{ secrets.SAW_AGENT_KEY }}       
+  SAW_API_KEY: ${{ secrets.SAW_API_KEY }}
 
   # Github Env
   ## Snyk APi & Web Target information
