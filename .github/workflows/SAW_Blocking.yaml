@@ -109,7 +109,7 @@ jobs:
       - name: Start Scan
         run: |
            sleep 30
-           probely targets follow-scan --api-key ${{ secrets.SAW_API_KEY }} --severity-threshold CRITICAL 3dPzYCbD1aBm
+           probely targets follow-scan --api-key ${{ secrets.SAW_API_KEY }} --severity-threshold CRITICAL 2rRfdS6ysCuS
           
       # Step 14: Clean up
       - name: Clean up Docker resources
