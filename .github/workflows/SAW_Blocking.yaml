@@ -56,7 +56,7 @@ jobs:
       - name: Build app container
         run: |
           # Build the Docker image
-          docker build -t ${{ vars.SAW_TARGET_NAME }}.
+          docker build -t ${{ vars.SAW_TARGET_NAME }} .
           ## target name can't have a dash and no spaces!!
           
 
