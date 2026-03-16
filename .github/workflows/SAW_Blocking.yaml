@@ -108,6 +108,7 @@ jobs:
       # Step 10: Install Probely CLI & Start Scan Blocking on CRITICAL
       - name: Start Scan
         run: |
+           sleep 30
            probely targets follow-scan --api-key ${{ secrets.SAW_API_KEY }} --severity-threshold CRITICAL 3dPzYCbD1aBm
           
       # Step 14: Clean up
