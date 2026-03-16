@@ -113,8 +113,8 @@ jobs:
       # Step 14: Clean up
       - name: Clean up Docker resources
         run: |
-          docker stop $SAW_TARGET_NAME
+          docker stop ${{ vars.SAW_TARGET_NAME }}
           docker stop probely-agent
-          docker rm $SAW_TARGET_NAME
+          docker rm ${{ vars.SAW_TARGET_NAME }}
           docker rm probely-agent
           docker network rm $DOCKER_NETWORK
