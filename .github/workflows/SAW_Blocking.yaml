@@ -56,7 +56,7 @@ jobs:
       - name: Build app container
         run: |
           # Build the Docker image
-          docker build -t $SAW_TARGET_NAME .
+          docker build -t ${{ vars.SAW_TARGET_NAME }}.
           ## target name can't have a dash and no spaces!!
           
 
@@ -66,11 +66,11 @@ jobs:
           # Run the Docker container
           # hostname, network alias set for container to container comms
           
-          docker run --name $SAW_TARGET_NAME \
-            --hostname $SAW_TARGET_NAME \
+          docker run --name $${{ vars.SAW_TARGET_NAME }} \
+            --hostname ${{ vars.SAW_TARGET_NAME }} \
             --network $DOCKER_NETWORK \
-            --network-alias $SAW_TARGET_NAME \
-            -d $SAW_TARGET_NAME
+            --network-alias ${{ vars.SAW_TARGET_NAME }} \
+            -d ${{ vars.SAW_TARGET_NAME }}
 
       # Setp 6: Start scanning agent
       - name: Start Scanning Agent
@@ -78,7 +78,7 @@ jobs:
           # Using docker agent
           docker run -d --name probely-agent \
             --network $DOCKER_NETWORK \
-            -e FARCASTER_AGENT_TOKEN=$SAW_AGENT_KEY \
+            -e FARCASTER_AGENT_TOKEN=${{ secrets.SAW_AGENT_KEY }} \
             --device /dev/net/tun probely/farcaster-onprem-agent:v3
             
       # Step 7: Wait for agent to stat
@@ -108,7 +108,7 @@ jobs:
       # Step 10: Install Probely CLI & Start Scan Blocking on CRITICAL
       - name: Start Scan
         run: |
-           probely targets follow-scan --api-key ${{ secrets.SAW_API_KEY }} --severity-threshold { CRITICAL } ${{ SAW_TARGET_ID }}
+           probely targets follow-scan --api-key ${{ secrets.SAW_API_KEY }} --severity-threshold { CRITICAL } ${{ vars.SAW_TARGET_ID }}
           
       # Step 14: Clean up
       - name: Clean up Docker resources
