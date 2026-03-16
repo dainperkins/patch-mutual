@@ -66,7 +66,7 @@ jobs:
           # Run the Docker container
           # hostname, network alias set for container to container comms
           
-          docker run --name $${{ vars.SAW_TARGET_NAME }} \
+          docker run --name ${{ vars.SAW_TARGET_NAME }} \
             --hostname ${{ vars.SAW_TARGET_URL }} \
             --network $DOCKER_NETWORK \
             --network-alias ${{ vars.SAW_TARGET_URL }} \
