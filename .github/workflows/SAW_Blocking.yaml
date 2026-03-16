@@ -102,14 +102,13 @@ jobs:
       # Step 9: Install Probely CLI
       - name: Install Probely CLI
         run: |
-          # echo "probely targets get --api-key $SAW_API_KEY"
           # Install Probely CLI
           pip install probely
       
       # Step 10: Install Probely CLI & Start Scan Blocking on CRITICAL
       - name: Start Scan
         run: |
-           probely targets follow-scan --api-key ${{ SAW_API_KEY }} --severity-threshold { CRITICAL } ${{ SAW_TARGET_ID }}
+           probely targets follow-scan --api-key ${{ secrets.SAW_API_KEY }} --severity-threshold { CRITICAL } ${{ SAW_TARGET_ID }}
           
       # Step 14: Clean up
       - name: Clean up Docker resources
